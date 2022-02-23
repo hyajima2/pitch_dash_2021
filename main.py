@@ -521,4 +521,4 @@ def track(pt, player_id):
 
 
 if __name__ == '__main__':
-        app.run_server(debug=True, port=8899)
+        app.run_server(debug=False, port=8899)
