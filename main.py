@@ -39,6 +39,7 @@ pitch_type_dict = {'All':'All Pitch Type','FF': 'Fastball', 'SL': 'Slider', 'CH'
 
 # app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LUMEN])
+server = app.server
 
 
 app.layout = html.Div([
