@@ -20,9 +20,10 @@ import dash_bootstrap_components as dbc
 from pybaseball import statcast
 
 # data manipulation
-data = pd.read_csv('pitch_data_2021.csv')
-data = data.merge(data.groupby('pitcher')['game_date'].count().reset_index().rename(columns = {'game_date': 'number_of_pitch'}), on = 'pitcher', how = 'left')
-data = data.loc[data.number_of_pitch > 200]
+df_list = []
+for i in ['a', 'b', 'c', 'd', 'e', 'f', 'g']:
+    df_list.append(pd.read_csv('pitch_data_2021_'+i+'.csv'))
+data = pd.concat(df_list, axis = 0)
 
 name_id = {' '.join(i.split(', ')[::-1]) : j for i, j in zip(data.player_name, data.pitcher)}
 pitch_type_dict = {'All':'All', 'FF': 'Fastball', 'SL': 'Slider', 'CH':'Changeup', 'SI': 'Sinker', 'CU': 'Curveball', 'FC': 'Cutter', 'KC':'Knuckle-curve', 'FS': 'Splitter'}
